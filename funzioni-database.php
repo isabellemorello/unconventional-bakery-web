@@ -2,7 +2,7 @@
 // Funzione per la connessione al database db_purinan_ubw
 function dbConnect()
 {
-    $db = mysqli_connect("127.0.0.1", "root", "", "db_purinan_ubw");
+    $db = mysqli_connect("127.0.0.1", "root", "", "db_purinan_ubw"); // CORRETTO (controllato sul database in "Privilegi")
 
     if (!$db) {
         echo "Error: Unable to connect to MySQL." . PHP_EOL;

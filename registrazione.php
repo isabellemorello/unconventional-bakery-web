@@ -96,12 +96,15 @@
                 $passwordErr = "Inserisci la Password";
             } else {
                 $password = test_input($_POST["password"]);
-                // Controllo che il $password contenga solo lettere e spazi bianchi
+                // Controllo che la $password contenga lettere maiuscole, minuscole, numeri e caratteri speciali
+                // Password deve essere lunga min 8 e max 16 caratteri
                 if (
-                    !preg_match("/^[a-z ]*$/", $password) && !preg_match("/^[A-Z]*$/", $password) &&
-                    !preg_match("/^[0-9]*$/", $password) && !preg_match("/^[!?£%&\^\/\*-_#@]*$/", $password)
+                    !preg_match_all("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/m", $password)
                 ) {
-                    $passwordErr = "Obbligatorio Inserire lettere minuscole e Maiuscole, numeri e caratteri speciali";
+                    $passwordErr = "La password deve essere lunga tra gli 8 e i 16 carateri. \n
+                    Obbligatorio inserire lettere minuscole e Maiuscole, numeri e caratteri speciali.";
+                } else {
+                    $passwordHash = md5($password); // Cifro la password se rispetta gli obblighi imposti sopra
                 }
             }
         }
@@ -147,6 +150,7 @@
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <button type="submit" class="btn btn-primary" style="background-color: #585859; border: none">Registrati</button>
+                <?php echo $passwordHash ?>
             </form>
         </div>
         <br>
