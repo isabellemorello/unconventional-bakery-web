@@ -1,5 +1,5 @@
 <?php
-include('fuzioni-database.php');
+//include('fuzioni-database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +8,7 @@ include('fuzioni-database.php');
     <title>Purinan Unconventional Bakery</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -65,17 +66,81 @@ include('fuzioni-database.php');
         <br>
         <!-- ---------------------------------------------------------------------------------------- -->
 
-        <!-- form per l'inserimento di dati sul DB -->
+        <?php
+        // Definisco le variabili e li setto senza valori
+        $nameErr = $emailErr = $passwordErr = "";
+        $name = $email = $password = "";
+
+        // Definisco i campi obbligatori           
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Nome e Cognome
+            if (empty($_POST["name"])) {
+                $nameErr = "Inserisci Nome e Cognome";
+            } else {
+                $name = test_input($_POST["name"]);
+                // Controllo che il $name contenga solo lettere e spazi bianchi
+                if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+                    $nameErr = "Inserire solo lettere e spazi bianchi";
+                }
+            }
+            // Email
+            if (empty($_POST["email"])) {
+                $email = test_input($_POST["email"]);
+                // Controllo se l'indirizzo e-mail sia scritto bene
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = "E-mail non valida";
+                }
+            }
+            // Password
+            if (empty($_POST["password"])) {
+                $passwordErr = "Inserisci la Password";
+            } else {
+                $password = test_input($_POST["password"]);
+                // Controllo che il $password contenga solo lettere e spazi bianchi
+                if (
+                    !preg_match("/^[a-z ]*$/", $password) && !preg_match("/^[A-Z]*$/", $password) &&
+                    !preg_match("/^[0-9]*$/", $password) && !preg_match("/^[!?£%&\^\/\*-_#@]*$/", $password)
+                ) {
+                    $passwordErr = "Obbligatorio Inserire lettere minuscole e Maiuscole, numeri e caratteri speciali";
+                }
+            }
+        }
+
+        function test_input($data)
+        {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+        ?>
+
+        <!-- ---------------------------------------------------------------------------------------- -->
+
+        <!-- Form per l'inserimento di dati sul DB -->
         <div class="col-md-4" style="text-align: center;">
-            <form>
+            <p><span class="error">* Campo obbligatorio</span></p>
+            <br><br>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <!-- NOME e COGNOME -->
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="username">Inserisci Nome e Cognome</label>
+                    <input type="text" name="name" value="<?php echo $name; ?>" class="form-control" id="username">
+                    <span class="error">* <?php echo $nameErr; ?></span>
                 </div>
+                <br>
+                <!-- E-MAIL -->
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="email">Inserisci l'E-mail</label>
+                    <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" id="email">
+                    <span class="error">* <?php echo $emailErr; ?></span>
+                </div>
+                <br>
+                <!-- PASSWORD -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" value="<?php echo $password; ?>" class="form-control" id="password">
+                    <span class="error">* <?php echo $passwordErr; ?></span>
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -84,7 +149,26 @@ include('fuzioni-database.php');
                 <button type="submit" class="btn btn-primary" style="background-color: #585859; border: none">Registrati</button>
             </form>
         </div>
+        <br>
+
         <!-- ---------------------------------------------------------------------------------------- -->
+
+        <!-- * inserire tag php *
+        //controllo campi completati
+
+        /*
+        if ($username = "" && $password = "") {
+            //richiamo la funzione inserisci_utente();
+            inserisci_utente($username, $password);
+        } else {
+            echo '<div class="alert alert-danger">
+				<strong>Compila tutti i campi, grazie.</strong>
+			  </div>';
+        }
+        */
+        -->
+
+        <!-- --------------------------------------------------------------------------------------- -->
 
         <!--<div class="footer" style="min-height: 100%;> -->
 
