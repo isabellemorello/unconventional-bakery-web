@@ -68,8 +68,8 @@
 
         <?php
         // Definisco le variabili e li setto senza valori
-        $nameErr = $emailErr = $passwordErr = "";
-        $name = $email = $password = "";
+        $nameErr = $emailErr = $passwordErr = $passwordConfErr = "";
+        $name = $email = $password = $passwordConferma = "";
 
         // Definisco i campi obbligatori           
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -78,9 +78,9 @@
                 $nameErr = "Inserisci Nome e Cognome";
             } else {
                 $name = test_input($_POST["name"]);
-                // Controllo che il $name contenga solo lettere e spazi bianchi
+                // Controllo che il $name contenga solo lettere e spazi vuoti
                 if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
-                    $nameErr = "Inserire solo lettere e spazi bianchi";
+                    $nameErr = "Inserire solo lettere e spazi vuoti";
                 }
             }
             // Email
@@ -103,17 +103,29 @@
                 ) {
                     $passwordErr = "La password deve essere lunga tra gli 8 e i 16 carateri. \n
                     Obbligatorio inserire lettere minuscole e Maiuscole, numeri e caratteri speciali.";
+                }
+            }
+
+            // Conferma password
+            if (empty($_POST["passwordConferma"])) {
+                $passwordConfErr = "Riscrivi la password per confermare";
+            } else {
+                $passwordConferma = test_input($_POST["passwordConferma"]);
+                // Controlla che l'utente abbia inserito la stessa password
+                if ($_POST["password"] != $_POST["passwordConferma"]) {
+                    $passwordConfErr = "La password non coincide. Ricontrolla.";
                 } else {
                     $passwordHash = md5($password); // Cifro la password se rispetta gli obblighi imposti sopra
                 }
             }
         }
 
-        function test_input($data)
+        function test_input($data) //fortifica la validazione del FORM
         {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
+            $data = trim($data); //trim --> toglie caratteri non necessari negli input dell'utente
+            $data = stripslashes($data); //stripslashes --> rimuove i back-slash dai dati input dell'utente
+            $data = htmlspecialchars($data); //htmlspacialchars --> Converte i caratteri speciali in HTML: 
+            //ulteriore metodo di validazione del form
             return $data;
         }
         ?>
@@ -125,6 +137,7 @@
             <p><span class="error">* Campo obbligatorio</span></p>
             <br><br>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <!-- Validazione del FORM -->
                 <!-- NOME e COGNOME -->
                 <div class="form-group">
                     <label for="username">Inserisci Nome e Cognome</label>
@@ -145,12 +158,20 @@
                     <input type="password" name="password" value="<?php echo $password; ?>" class="form-control" id="password">
                     <span class="error">* <?php echo $passwordErr; ?></span>
                 </div>
+                <!-- PASSWORD CONFIRM -->
+                <div class="form-group">
+                    <label for="password">Conferma Password</label>
+                    <input type="password" name="passwordConferma" value="<?php echo $passwordConferma; ?>" class="form-control" id="password">
+                    <span class="error">* <?php echo $passwordConfErr; ?></span>
+                </div>
+                <!-- CHECKBOX -->
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
-                <button type="submit" class="btn btn-primary" style="background-color: #585859; border: none">Registrati</button>
-                <?php echo $passwordHash ?>
+                <button type="submit" class="btn btn-primary" style="background-color: #585859; border: none;">Registrati</button>
+                <?php echo $passwordHash; ?>
+                <!-- DA TOGLIERE-->
             </form>
         </div>
         <br>

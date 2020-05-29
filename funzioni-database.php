@@ -2,14 +2,14 @@
 // Funzione per la connessione al database db_purinan_ubw
 function dbConnect()
 {
-    $db = mysqli_connect("127.0.0.1", "root", "", "db_purinan_ubw"); // CORRETTO (controllato sul database in "Privilegi")
+    $database_ubw = mysqli_connect("127.0.0.1", "root", "", "db_purinan_ubw"); // CORRETTO (controllato sul database in "Privilegi")
 
-    if (!$db) {
-        echo "Error: Unable to connect to MySQL." . PHP_EOL;
-        echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-        echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    if (!$database_ubw) {
+        echo "Errore: impossibile connettersi al database." . PHP_EOL;
+        echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL; //fornisce il codice dell'errore
+        echo "Debugging error: " . mysqli_connect_error() . PHP_EOL; //fornisce la descrizione dell'errore
     }
-    return $db;
+    return $database_ubw;
 }
 
 // Inserimento utenti
