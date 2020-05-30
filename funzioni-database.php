@@ -13,11 +13,11 @@ function dbConnect()
 }
 
 // Inserimento utenti
-function inserimento_utente($name, $email, $passwordHash)
+function inserimento_utente($name, $email, $passwordHash, $city, $address, $number)
 {
     $conn = dbConnect();
-    $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password) 
-            VALUES ('" . $name . "', '" . $email . "', '" . $passwordHash . "' );";
+    $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password, user_city, user_address, user_number) 
+            VALUES ('" . $name . "', '" . $email . "', '" . $passwordHash . "', '" . $city . "', '" . $address . "','" . $number . "');";
     if (!$conn->query($sql)) {
         echo '<div class="alert alert-danger"><strong>Attenzione errore nella query:</strong> ' . $sql . "\n" . mysqli_error($conn) . '</div>';
     } else {

@@ -72,8 +72,8 @@ include("funzioni-database.php");
 
             <?php
             // Definisco le variabili e li setto senza valori
-            $nameErr = $emailErr = $passwordErr = $passwordConfErr = "";
-            $name = $email = $password = $passwordConferma = $passwordHash = "";
+            $nameErr = $emailErr = $passwordErr = $passwordConfErr = $addressErr = $cityErr = $numberErr = "";
+            $name = $email = $password = $passwordConferma = $passwordHash = $address = $city = $number = "";
             $submit_ok = false;
 
             // Definisco i campi obbligatori           
@@ -96,6 +96,36 @@ include("funzioni-database.php");
                     // Controllo se l'indirizzo e-mail sia scritto bene
                     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                         $emailErr = "E-mail non valida";
+                    }
+                }
+                // Città
+                if (empty($_POST["city"])) {
+                    $cityErr = "Inserisci la tua città e la provincia";
+                } else {
+                    $city = clean_input($_POST["city"]);
+                    // Controllo se l'indirizzo e-mail sia scritto bene
+                    if (!preg_match("/^[a-zA-Z \(\)]*$/", $city)) {
+                        $cityErr = "Inserire solo lettere e la provincia tra parentesi";
+                    }
+                }
+                // Indirizzo
+                if (empty($_POST["address"])) {
+                    $addressErr = "Inserisci il tuo inidirizzo civico, necessario per le consegne a domicilio";
+                } else {
+                    $address = clean_input($_POST["address"]);
+                    // Controllo se l'indirizzo e-mail sia scritto bene
+                    if (!preg_match("/^[a-zA-Z 0-9\/°,\+\-]*$/", $address)) {
+                        $addressErr = "Inserire solo lettere e numero civico";
+                    }
+                }
+                // Numero di telefono
+                if (empty($_POST["number"])) {
+                    $numberErr = "Inserisci il tuo numero di telefono";
+                } else {
+                    $number = clean_input($_POST["number"]);
+                    // Controllo se l'indirizzo e-mail sia scritto bene
+                    if (!preg_match("/^[0-9\+ \-\(\)]*$/", $number)) {
+                        $numberErr = "Inserire valori numerici";
                     }
                 }
                 // Password
@@ -126,13 +156,13 @@ include("funzioni-database.php");
                     }
                 }
 
-                if ($nameErr == "" && $emailErr == "" && $passwordErr == "" && $passwordConfErr == "") {
+                if ($nameErr == "" && $emailErr == "" && $passwordErr == "" && $passwordConfErr == "" && $cityErr == "" && $addressErr == "" && $numberErr == "") {
                     $submit_ok = true;
                 }
             }
 
             if ($submit_ok) {
-                inserimento_utente($name, $email, $passwordHash);
+                inserimento_utente($name, $email, $passwordHash, $city, $address, $number);
             }
 
             function clean_input($data) //fortifica la validazione del FORM
@@ -171,18 +201,38 @@ include("funzioni-database.php");
                                 <span class="error">* <?php echo $emailErr; ?></span>
                             </div>
                             <br>
+                            <!-- INDIRIZZO -->
+                            <div class="form-group">
+                                <label for="city">Inserisci la Città in cui vivi e la Provincia</label>
+                                <input type="text" name="city" value="<?php echo $city; ?>" class="form-control" id="city">
+                                <span class="error">* <?php echo $cityErr; ?></span>
+                                <br><br>
+                                <label for="address">Inserisci l'Indirizzo e il numero civico</label>
+                                <input type="text" name="address" value="<?php echo $address; ?>" class="form-control" id="address">
+                                <span class="error">* <?php echo $addressErr; ?></span>
+                            </div>
+                            <br>
+                            <!-- NUMERO DI TELEFONO -->
+                            <div class="form-group">
+                                <label for="number">Inserisci il tuo Numero di Telefono</label>
+                                <input type="text" name="number" value="<?php echo $number; ?>" class="form-control" id="number">
+                                <span class="error">* <?php echo $numberErr; ?></span>
+                            </div>
+                            <br>
                             <!-- PASSWORD -->
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" value="<?php echo $password; ?>" class="form-control" id="password">
                                 <span class="error">* <?php echo $passwordErr; ?></span>
                             </div>
+                            <br>
                             <!-- PASSWORD CONFIRM -->
                             <div class="form-group">
                                 <label for="password">Conferma Password</label>
                                 <input type="password" name="passwordConferma" value="<?php echo $passwordConferma; ?>" class="form-control" id="password">
                                 <span class="error">* <?php echo $passwordConfErr; ?></span>
                             </div>
+                            <br>
                             <!-- CHECKBOX -->
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
