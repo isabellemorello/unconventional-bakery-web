@@ -3,6 +3,7 @@
     text-align: center;
     padding: 5px;
 }
+
 .griglia-catalogo:hover {
     background-color: #cfcfd3;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 15px 30px 0 rgba(0, 0, 0, 0.19);
@@ -25,11 +26,10 @@
     visibility: visible;
   }
 
-  .btn {
+.btn {
     border-radius: 10px;
-    padding: 15px;
+    padding: 15px 10px;
     text-align: center;
-    width: max-content;
     border: none;
     color: white;
     background-color: #585859;
@@ -37,8 +37,13 @@
 }
 
 .btn:hover {
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 15px 30px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2), 0 15px 20px 0 rgba(0, 0, 0, 0.19);
     color: white;
+    font-weight: bold;
+}
+
+#catalogo {
+  float: right;
 }
 
 .error {
