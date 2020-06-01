@@ -31,3 +31,5 @@ function inserimento_utente($name, $email, $passwordHash, $city, $address, $numb
     }
     mysqli_close($conn);
 }
+
+// Catalogo

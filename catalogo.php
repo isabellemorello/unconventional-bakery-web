@@ -1,3 +1,7 @@
+<?php
+include("funzioni-database.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +19,7 @@
     <div class="page" style="min-height: 100vh; display: flex; flex-direction: column;">
         <header>
             <nav class="navbar navbar-inverse navbar-fixed-top" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        height: 80px; background-color: #585859;">
+                        height: 80px; background-color: #585959;">
                 <!--Qui (nel tag "nav") si può cambiare il font della navbar inserendo uno style-->
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -24,12 +28,10 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img class="logo" src="images/logo-purinan-traspartente2.png"
-                                alt="logo" style="width:180px"></a>
+                        <a class="navbar-brand" href="#"><img class="logo" src="images/logo-purinan-traspartente2.png" alt="logo" style="width:180px"></a>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="myNavbar"
-                        style="margin-top: 10px; padding: 10px 10px; background-color: #585859;">
+                    <div class="collapse navbar-collapse" id="myNavbar" style="margin-top: 10px; padding: 10px 10px; background-color: #585859;">
                         <ul class="nav navbar-nav">
                             <li><a href="index-ubw.html" style="background-color: #585859;">Home</a>
                             </li>
@@ -58,7 +60,7 @@
             </nav>
         </header>
 
-        <div class="main" style="flex-grow: 1">
+        <div class="main" style="flex-grow: 1" method="POST">
             <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
                 <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
                     Catalogo</h2>
@@ -75,14 +77,13 @@
 
         <!-- -------------------------------------------------------------------------------------- -->
         <!-- RIGA 1 -->
-        <div class="container-fluid width: 100%">
+        <div class="container-fluid width: 100%" method="POST">
             <div class="row">
                 <div class="col-md-4" style="text-align:center; ">
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/canestrelli.jpg" alt="canestrelli"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"></p>
+                            <img src="images/prodotti-catalogo/canestrelli.jpg" alt="canestrelli" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"></p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Canestrelli
                         </p>
@@ -96,8 +97,7 @@
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/macaron.jpg" alt="macaron"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+                            <img src="images/prodotti-catalogo/macaron.jpg" alt="macaron" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
                         </p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Macaron
@@ -110,8 +110,7 @@
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/cup-cake.jpg" alt="cup-cake"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+                            <img src="images/prodotti-catalogo/cup-cake.jpg" alt="cup-cake" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
                         </p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Cupcake
@@ -124,14 +123,13 @@
 
         <!-- -------------------------------------------------------------------------------------- -->
         <!-- RIGA 2 -->
-        <div class="container-fluid width: 100%">
+        <div class="container-fluid width: 100%" method="POST">
             <div class="row">
                 <div class="col-md-4" style="text-align:center;">
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/bavarese.jpg" alt="bavarese-ai-frutti-di-bosco"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"></p>
+                            <img src="images/prodotti-catalogo/bavarese.jpg" alt="bavarese-ai-frutti-di-bosco" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"></p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Bavarese ai frutti di bosco
                         </p>
@@ -143,8 +141,7 @@
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/cassatina.jpg" alt="cassatina-siciliana"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+                            <img src="images/prodotti-catalogo/cassatina.jpg" alt="cassatina-siciliana" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
                         </p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Cassatina Siciliana
@@ -157,8 +154,7 @@
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/cannolo.jpg" alt="cannolo-crema"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+                            <img src="images/prodotti-catalogo/cannolo.jpg" alt="cannolo-crema" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
                         </p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Cannolo alla crema
@@ -171,14 +167,13 @@
 
         <!-- -------------------------------------------------------------------------------------- -->
         <!-- RIGA 3 -->
-        <div class="container-fluid width: 100%">
+        <div class="container-fluid width: 100%" method="POST">
             <div class="row">
                 <div class="col-md-4" style="text-align:center;">
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/bigne.jpg" alt="bigne-cioccolato"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"></p>
+                            <img src="images/prodotti-catalogo/bigne.jpg" alt="bigne-cioccolato" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;"></p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Bignè al cioccolato
                         </p>
@@ -190,8 +185,7 @@
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/torta-caffe.png" alt="torta-caffe"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+                            <img src="images/prodotti-catalogo/torta-caffe.png" alt="torta-caffe" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
                         </p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Torta al caffè
@@ -204,8 +198,7 @@
                     <div class="griglia-catalogo">
                         <span class="tooltiptext">Aggiungi al carrello</span>
                         <p>
-                            <img src="images/prodotti-catalogo/sacher.jpg" alt="torta-sacher"
-                                style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
+                            <img src="images/prodotti-catalogo/sacher.jpg" alt="torta-sacher" style="width:80%; text-align: center; margin-left: auto; margin-right: auto;">
                         </p>
                         <p style="text-align: center; padding: 10px; font-weight: bold; font-size: 18px;">
                             Torta Sacher
@@ -252,8 +245,7 @@
                     <!--Facebook
                         <a href="#" class="btn-floating btn-lg btn-fb" type="button" role="button">
                             <i class="fab fa-facebook-f"></i></a>-->
-                    <a href="https://www.facebook.com/purinanbakery/" class="fa fa-facebook" target="_blank"> <img
-                            class="social-facebook" src="images/logo-fb.png" width="30px"> </a>
+                    <a href="https://www.facebook.com/purinanbakery/" class="fa fa-facebook" target="_blank"> <img class="social-facebook" src="images/logo-fb.png" width="30px"> </a>
                     <a href="https://www.instagram.com/purinan_bakery/" class="fa fa-instagram" target="_blank">
                         <img class="social-insta" src="images/insta-logo-rosso.png" width="30px">
                     </a>

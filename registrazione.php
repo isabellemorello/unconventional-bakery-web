@@ -203,7 +203,7 @@ include("funzioni-database.php");
                             <br>
                             <!-- INDIRIZZO -->
                             <div class="form-group">
-                                <label for="city">Inserisci la Città in cui vivi e la Provincia</label>
+                                <label for="city">Inserisci la tua Città e la tua Provincia</label>
                                 <input type="text" name="city" value="<?php echo $city; ?>" class="form-control" id="city">
                                 <span class="error">* <?php echo $cityErr; ?></span>
                                 <br><br>
