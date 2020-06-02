@@ -8,55 +8,46 @@ include("funzioni-database.php");
     <title>Purinan Unconventional Bakery</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
     <div>
-        <header>
-            <nav class="navbar navbar-inverse navbar-fixed-top" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-                        height: 80px; background-color: #585859;">
-                <!--Qui (nel tag "nav") si può cambiare il font della navbar inserendo uno style-->
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><img class="logo" src="images/logo-purinan-traspartente2.png" alt="logo" style="width:180px"></a>
-                    </div>
+    <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <a class="navbar-brand" href="#">
+        <img src="images/logo-purinan-traspartente2.png" height="44" alt="" loading="lazy">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-                    <div class="collapse navbar-collapse" id="myNavbar" style="margin-top: 10px; padding: 10px 10px; background-color: #585859;">
-                        <ul class="nav navbar-nav">
-                            <li class="active;"><a href="index-ubw.html" style="background-color: #585859;">Home</a>
-                            </li>
-                            <!--
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Page 1-1</a></li>
-                                <li><a href="#">Page 1-2</a></li>
-                                <li><a href="#">Page 1-3</a></li>
-                            </ul> 
-                        </li> -->
-                            <li><a href="chi-siamo.html">Chi siamo</a></li>
-                            <li><a href="catalogo.html">Catalogo</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                            <li class="active;"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>
-                                    Carrello</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index-ubw.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="chi-siamo.html">Chi Siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="catalogo.php">Catalogo</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"><i class="fas fa-user"></i> Log In <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
         <main class="container">
             <div style="margin-top:80px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding:10px">
@@ -270,43 +261,44 @@ include("funzioni-database.php");
 
         <!--<div class="footer" style="min-height: 100%;> -->
 
-        <footer class="navbar navbar-light" style="background-color:#585859;
-                         color: white;">
+        <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <h5>Orari</h5>
+          <ul class="list-unstyled">
+            <li>Lun-Sab: 7.00–19.30</li>
+            <li class="mb-3">Orario Continuato</li>
+            <li>Domenica: chiuso</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Informazioni</h5>
+          <ul class="list-unstyled">
+            <li>Purinan Unconventional Bakery</li>
+            <li>
+              <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Social</h5>
+          <a class="text-danger mr-2" href="https://www.facebook.com/purinanbakery" target="_blank">
+            <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a class="text-danger" href="https://www.instagram.com/purinan_bakery" target="_blank">
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+        </div>
+      </div>
 
+      <p class="text-center mb-0">Copyright &copy; Morello & Purinan</p>
+    </div>
+  </footer>
 
-            <div class="col-6 col-md-4" style="text-align:center">
-                <h2>Orari</h2>
-                <p>Lun-Sab: 7.00-19.30</p>
-                <p>Orario Continuato</p>
-                <p>Domenica: chiuso</p>
-            </div>
-
-            <div class="col-6 col-md-4" style="text-align: center">
-                <h2>Informazioni</h2>
-                <p>Purinan Unconventional Bakery</p>
-                <p><a href="https://bit.ly/2XaykMC" target="_blank" style="color: white;">Via del Gelso 2, Udine</a>
-                </p><br>
-                <p>Copyright &copy; Morello & Purinan</p>
-            </div>
-
-            <div class="col-6 col-md-4" style="text-align: center">
-                <h2>Social</h2>
-                <div>
-                    <style>
-                        .fa:hover {
-                            opacity: 0.7;
-                        }
-                    </style>
-                    <!--Facebook
-                        <a href="#" class="btn-floating btn-lg btn-fb" type="button" role="button">
-                            <i class="fab fa-facebook-f"></i></a>-->
-                    <a href="https://www.facebook.com/purinanbakery/" class="fa fa-facebook" target="_blank"> <img class="social-facebook" src="images/logo-fb.png" width="30px"> </a>
-                    <a href="https://www.instagram.com/purinan_bakery/" class="fa fa-instagram" target="_blank">
-                        <img class="social-insta" src="images/insta-logo-rosso.png" width="30px">
-                    </a>
-                </div>
-            </div>
-        </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     </div>
 </body>

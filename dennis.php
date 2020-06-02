@@ -23,19 +23,19 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index-ubw.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="chi-siamo.html">Chi Siamo</a>
-          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Catalogo <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Chi Siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Catalogo</a>
           </li>
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="registrazione.php"><i class="fas fa-user"></i> Log In</a>
+            <a class="nav-link" href="#"><i class="fas fa-user"></i> Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrello</a>
@@ -44,23 +44,6 @@
       </div>
     </nav>
   </header>
-
-<!-- ----------------------------------------------------------------------------------- -->
-
-<div class="main" style="flex-grow: 1" method="POST">
-            <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
-                <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
-                    Catalogo</h2>
-                <h4 class="container" style="border-radius: 5px; background-color: #cfcfd3; padding: 10px;">Benvenuti
-                    nello shop online di "Purinan - Unconventional Bakery"!</h4>
-                <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
-                <p>L'acquisto è molto semplice: basta passare con il mouse sopra la foto del prodotto desiderato e
-                    cliccare. Il prodotto verrà aggiunto automaticamente al carrello.</p>
-                <p>Per vedere tutti i prodotti che sono stati aggiunti al carrello e completare l'acquisto, basta andare
-                    nella sezione "Carrello", dove si possono aggiungere le quantità per prodotto selezionato.</p>
-            </div>
-        </div>
-        <br>
 
 <!-- ----------------------------------------------------------------------------------- -->
 

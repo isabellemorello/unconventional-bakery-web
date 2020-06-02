@@ -16,7 +16,7 @@ function dbConnect()
 function inserimento_utente($name, $email, $passwordHash, $city, $address, $number)
 {
     $conn = dbConnect();
-    $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password, user_city, user_address, user_number) 
+    $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password, user_city, user_address, user_number)
             VALUES ('" . $name . "', '" . $email . "', '" . $passwordHash . "', '" . $city . "', '" . $address . "','" . $number . "');";
     if (!$conn->query($sql)) {
         echo '<div class="alert alert-danger"><strong>Attenzione errore nella query:</strong> ' . $sql . "\n" . mysqli_error($conn) . '</div>';
@@ -26,10 +26,43 @@ function inserimento_utente($name, $email, $passwordHash, $city, $address, $numb
 			  </div>';
         echo '<div>
                 <a href="index-ubw.html" class="btn btn-secondary">Torna alla Homepage</a>
-                <a href="catalogo.html" class="btn btn-secondary" id="catalogo">Vai al Catalogo</a>
+                <a href="catalogo.php" class="btn btn-secondary" id="catalogo">Vai al Catalogo</a>
             </div>';
     }
     mysqli_close($conn);
 }
 
 // Catalogo
+function ottieni_catalogo()
+{
+    $conn = dbConnect();
+    $sql = "SELECT * FROM ubw_product ORDER BY product_ID;";
+    $result = mysqli_query($conn, $sql);
+
+    while ($row = mysqli_fetch_array($result)) {
+        echo '<div class="col mb-5">
+                <div class="card border-0 shadow">
+                <img src=' . $row["product_image"] . ' class="card-img-top" alt="' . $row["product_name"] . '">
+                <div class="card-body">
+                    <h5 class="card-title">' . $row["product_name"] . '</h5>
+                    <h6 class="card-subtitle mb-4 text-muted">' . $row["product_price"] . '€/pz</h6>
+                    <button class="btn btn-dark btn-block">Aggiungi al carrello</button>
+                </div>
+                </div>
+            </div>';
+    }
+
+    mysqli_close($conn);
+}
+
+function inserimento_catalogo($name, $price)
+{
+    $conn = dbConnect();
+    $query = $conn->query("SELECT * FROM ubw_product WHERE product_name = '$name' AND product_price = '$price';");
+    if ($query->num_rows) {
+        echo "Bene";
+    } else {
+        echo "Male";
+    }
+    mysqli_close($conn);
+}
