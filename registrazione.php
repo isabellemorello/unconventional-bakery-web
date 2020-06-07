@@ -5,244 +5,244 @@ include("funzioni-database.php");
 <html lang="en">
 
 <head>
-    <title>Purinan Unconventional Bakery</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+  <title>Purinan Unconventional Bakery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
 
 </head>
 
 <body>
-    <div>
+  <div>
     <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-      <a class="navbar-brand" href="#">
-        <img src="images/logo-purinan-traspartente2.png" height="44" alt="" loading="lazy">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <a class="navbar-brand" href="#">
+          <img src="images/logo-purinan-traspartente2.png" height="44" alt="" loading="lazy">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index-ubw.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="chi-siamo.html">Chi Siamo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="catalogo.php">Catalogo</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><i class="fas fa-user"></i> Log In <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-          </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="chi-siamo.html">Chi Siamo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalogo.php">Catalogo</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><i class="fas fa-user"></i> Log In <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div style="margin-top:80px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding:10px">
+        <h2>Registrazione</h2>
       </div>
-    </nav>
-  </header>
+      <div class="container">
+        <p style="background-color: #cfcfd3; border-radius: 5px; padding: 5px 20px">
+          Effettua la registrazione per poter procedere con gli acquisti online. <br>
+          Dopo aver eseguito l'accesso avrai subito la possibilità di andare a sfogliare il catalogo e comprare i dolci che più preferisci.</p>
+      </div>
+      <br>
+      <!-- ---------------------------------------------------------------------------------------- -->
 
-        <main class="container">
-            <div style="margin-top:80px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding:10px">
-                <h2>Registrazione</h2>
-            </div>
-            <div class="container">
-                <p style="background-color: #cfcfd3; border-radius: 5px; padding: 5px 20px">
-                    Effettua la registrazione per poter procedere con gli acquisti online. <br>
-                    Dopo aver eseguito l'accesso avrai subito la possibilità di andare a sfogliare il catalogo e comprare i dolci che più preferisci.</p>
-            </div>
-            <br>
-            <!-- ---------------------------------------------------------------------------------------- -->
+      <?php
+      // Definisco le variabili e li setto senza valori
+      $nameErr = $emailErr = $passwordErr = $passwordConfErr = $addressErr = $cityErr = $numberErr = "";
+      $name = $email = $password = $passwordConferma = $passwordHash = $address = $city = $number = "";
+      $submit_ok = false;
 
-            <?php
-            // Definisco le variabili e li setto senza valori
-            $nameErr = $emailErr = $passwordErr = $passwordConfErr = $addressErr = $cityErr = $numberErr = "";
-            $name = $email = $password = $passwordConferma = $passwordHash = $address = $city = $number = "";
-            $submit_ok = false;
-
-            // Definisco i campi obbligatori           
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Nome e Cognome
-                if (empty($_POST["name"])) {
-                    $nameErr = "Inserisci Nome e Cognome";
-                } else {
-                    $name = clean_input($_POST["name"]);
-                    // Controllo che il $name contenga solo lettere e spazi vuoti
-                    if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
-                        $nameErr = "Inserire solo lettere e spazi vuoti";
-                    }
-                }
-                // Email
-                if (empty($_POST["email"])) {
-                    $emailErr = "Inserisci E-mail";
-                } else {
-                    $email = clean_input($_POST["email"]);
-                    // Controllo se l'indirizzo e-mail sia scritto bene
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                        $emailErr = "E-mail non valida";
-                    }
-                }
-                // Città
-                if (empty($_POST["city"])) {
-                    $cityErr = "Inserisci la tua città e la provincia";
-                } else {
-                    $city = clean_input($_POST["city"]);
-                    // Controllo se l'indirizzo e-mail sia scritto bene
-                    if (!preg_match("/^[a-zA-Z \(\)]*$/", $city)) {
-                        $cityErr = "Inserire solo lettere e la provincia tra parentesi";
-                    }
-                }
-                // Indirizzo
-                if (empty($_POST["address"])) {
-                    $addressErr = "Inserisci il tuo inidirizzo civico, necessario per le consegne a domicilio";
-                } else {
-                    $address = clean_input($_POST["address"]);
-                    // Controllo se l'indirizzo e-mail sia scritto bene
-                    if (!preg_match("/^[a-zA-Z 0-9\/°,\+\-]*$/", $address)) {
-                        $addressErr = "Inserire solo lettere e numero civico";
-                    }
-                }
-                // Numero di telefono
-                if (empty($_POST["number"])) {
-                    $numberErr = "Inserisci il tuo numero di telefono";
-                } else {
-                    $number = clean_input($_POST["number"]);
-                    // Controllo se l'indirizzo e-mail sia scritto bene
-                    if (!preg_match("/^[0-9\+ \-\(\)]*$/", $number)) {
-                        $numberErr = "Inserire valori numerici";
-                    }
-                }
-                // Password
-                if (empty($_POST["password"])) {
-                    $passwordErr = "Inserisci la Password";
-                } else {
-                    $password = clean_input($_POST["password"]);
-                    // Controllo che la $password contenga lettere maiuscole, minuscole, numeri e caratteri speciali
-                    // Password deve essere lunga min 8 e max 16 caratteri
-                    if (
-                        !preg_match_all("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/m", $password)
-                    ) {
-                        $passwordErr = "La password deve essere lunga tra gli 8 e i 16 carateri. \n
+      // Definisco i campi obbligatori           
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Nome e Cognome
+        if (empty($_POST["name"])) {
+          $nameErr = "Inserisci Nome e Cognome";
+        } else {
+          $name = clean_input($_POST["name"]);
+          // Controllo che il $name contenga solo lettere e spazi vuoti
+          if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+            $nameErr = "Inserire solo lettere e spazi vuoti";
+          }
+        }
+        // Email
+        if (empty($_POST["email"])) {
+          $emailErr = "Inserisci E-mail";
+        } else {
+          $email = clean_input($_POST["email"]);
+          // Controllo se l'indirizzo e-mail sia scritto bene
+          if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "E-mail non valida";
+          }
+        }
+        // Città
+        if (empty($_POST["city"])) {
+          $cityErr = "Inserisci la tua città e la provincia";
+        } else {
+          $city = clean_input($_POST["city"]);
+          // Controllo se l'indirizzo e-mail sia scritto bene
+          if (!preg_match("/^[a-zA-Z \(\)]*$/", $city)) {
+            $cityErr = "Inserire solo lettere e la provincia tra parentesi";
+          }
+        }
+        // Indirizzo
+        if (empty($_POST["address"])) {
+          $addressErr = "Inserisci il tuo inidirizzo civico, necessario per le consegne a domicilio";
+        } else {
+          $address = clean_input($_POST["address"]);
+          // Controllo se l'indirizzo e-mail sia scritto bene
+          if (!preg_match("/^[a-zA-Z 0-9\/°,\+\-]*$/", $address)) {
+            $addressErr = "Inserire solo lettere e numero civico";
+          }
+        }
+        // Numero di telefono
+        if (empty($_POST["number"])) {
+          $numberErr = "Inserisci il tuo numero di telefono";
+        } else {
+          $number = clean_input($_POST["number"]);
+          // Controllo se l'indirizzo e-mail sia scritto bene
+          if (!preg_match("/^[0-9\+ \-\(\)]*$/", $number)) {
+            $numberErr = "Inserire valori numerici";
+          }
+        }
+        // Password
+        if (empty($_POST["password"])) {
+          $passwordErr = "Inserisci la Password";
+        } else {
+          $password = clean_input($_POST["password"]);
+          // Controllo che la $password contenga lettere maiuscole, minuscole, numeri e caratteri speciali
+          // Password deve essere lunga min 8 e max 16 caratteri
+          if (
+            !preg_match_all("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/m", $password)
+          ) {
+            $passwordErr = "La password deve essere lunga tra gli 8 e i 16 carateri. \n
                     Obbligatorio inserire lettere minuscole e Maiuscole, numeri e caratteri speciali.";
-                    }
-                }
+          }
+        }
 
-                // Conferma password
-                if (empty($_POST["passwordConferma"])) {
-                    $passwordConfErr = "Riscrivi la password per confermare";
-                } else {
-                    $passwordConferma = clean_input($_POST["passwordConferma"]);
-                    // Controlla che l'utente abbia inserito la stessa password
-                    if ($_POST["password"] != $_POST["passwordConferma"]) {
-                        $passwordConfErr = "La password non coincide. Ricontrolla.";
-                    } else {
-                        $passwordHash = sha1($password); // Cifro la password se rispetta gli obblighi imposti sopra
-                    }
-                }
+        // Conferma password
+        if (empty($_POST["passwordConferma"])) {
+          $passwordConfErr = "Riscrivi la password per confermare";
+        } else {
+          $passwordConferma = clean_input($_POST["passwordConferma"]);
+          // Controlla che l'utente abbia inserito la stessa password
+          if ($_POST["password"] != $_POST["passwordConferma"]) {
+            $passwordConfErr = "La password non coincide. Ricontrolla.";
+          } else {
+            $passwordHash = sha1($password); // Cifro la password se rispetta gli obblighi imposti sopra
+          }
+        }
 
-                if ($nameErr == "" && $emailErr == "" && $passwordErr == "" && $passwordConfErr == "" && $cityErr == "" && $addressErr == "" && $numberErr == "") {
-                    $submit_ok = true;
-                }
-            }
+        if ($nameErr == "" && $emailErr == "" && $passwordErr == "" && $passwordConfErr == "" && $cityErr == "" && $addressErr == "" && $numberErr == "") {
+          $submit_ok = true;
+        }
+      }
 
-            if ($submit_ok) {
-                inserimento_utente($name, $email, $passwordHash, $city, $address, $number);
-            }
+      if ($submit_ok) {
+        inserimento_utente($name, $email, $passwordHash, $city, $address, $number);
+      }
 
-            function clean_input($data) //fortifica la validazione del FORM
-            {
-                $data = trim($data); //trim --> toglie caratteri non necessari negli input dell'utente
-                $data = stripslashes($data); //stripslashes --> rimuove i back-slash dai dati input dell'utente
-                $data = htmlspecialchars($data); //htmlspacialchars --> Converte i caratteri speciali in HTML: 
-                //ulteriore metodo di validazione del form
-                return $data;
-            }
+      function clean_input($data) //fortifica la validazione del FORM
+      {
+        $data = trim($data); //trim --> toglie caratteri non necessari negli input dell'utente
+        $data = stripslashes($data); //stripslashes --> rimuove i back-slash dai dati input dell'utente
+        $data = htmlspecialchars($data); //htmlspacialchars --> Converte i caratteri speciali in HTML: 
+        //ulteriore metodo di validazione del form
+        return $data;
+      }
 
-            ?>
+      ?>
 
-            <!-- ---------------------------------------------------------------------------------------- -->
+      <!-- ---------------------------------------------------------------------------------------- -->
 
-            <!-- Form per l'inserimento di dati sul DB -->
-            <div class="row justify-content-center">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div>
-                        <p><span class="error">* Campo obbligatorio</span></p>
-                        <br><br>
-                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                            <!-- Validazione del FORM -->
-                            <!-- NOME e COGNOME -->
-                            <div class="form-group">
-                                <label for="username">Inserisci Nome e Cognome</label>
-                                <input type="text" name="name" value="<?php echo $name; ?>" class="form-control" id="username">
-                                <span class="error">* <?php echo $nameErr; ?></span>
-                            </div>
-                            <br>
-                            <!-- E-MAIL -->
-                            <div class="form-group">
-                                <label for="email">Inserisci l'E-mail</label>
-                                <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" id="email">
-                                <span class="error">* <?php echo $emailErr; ?></span>
-                            </div>
-                            <br>
-                            <!-- INDIRIZZO -->
-                            <div class="form-group">
-                                <label for="city">Inserisci la tua Città e la tua Provincia</label>
-                                <input type="text" name="city" value="<?php echo $city; ?>" class="form-control" id="city">
-                                <span class="error">* <?php echo $cityErr; ?></span>
-                                <br><br>
-                                <label for="address">Inserisci l'Indirizzo e il numero civico</label>
-                                <input type="text" name="address" value="<?php echo $address; ?>" class="form-control" id="address">
-                                <span class="error">* <?php echo $addressErr; ?></span>
-                            </div>
-                            <br>
-                            <!-- NUMERO DI TELEFONO -->
-                            <div class="form-group">
-                                <label for="number">Inserisci il tuo Numero di Telefono</label>
-                                <input type="text" name="number" value="<?php echo $number; ?>" class="form-control" id="number">
-                                <span class="error">* <?php echo $numberErr; ?></span>
-                            </div>
-                            <br>
-                            <!-- PASSWORD -->
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" value="<?php echo $password; ?>" class="form-control" id="password">
-                                <span class="error">* <?php echo $passwordErr; ?></span>
-                            </div>
-                            <br>
-                            <!-- PASSWORD CONFIRM -->
-                            <div class="form-group">
-                                <label for="password">Conferma Password</label>
-                                <input type="password" name="passwordConferma" value="<?php echo $passwordConferma; ?>" class="form-control" id="password">
-                                <span class="error">* <?php echo $passwordConfErr; ?></span>
-                            </div>
-                            <br>
-                            <!-- CHECKBOX -->
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #585859; border: none;">Registrati</button>
-                            <?php echo $passwordHash; ?>
-                            <!-- DA TOGLIERE-->
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
-            </div>
-        </main>
-        <br>
+      <!-- Form per l'inserimento di dati sul DB -->
+      <div class="row justify-content-center">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div>
+            <p><span class="error">* Campo obbligatorio</span></p>
+            <br><br>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+              <!-- Validazione del FORM -->
+              <!-- NOME e COGNOME -->
+              <div class="form-group">
+                <label for="username">Inserisci Nome e Cognome</label>
+                <input type="text" name="name" value="<?php echo $name; ?>" class="form-control" id="username">
+                <span class="error">* <?php echo $nameErr; ?></span>
+              </div>
+              <br>
+              <!-- E-MAIL -->
+              <div class="form-group">
+                <label for="email">Inserisci l'E-mail</label>
+                <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" id="email">
+                <span class="error">* <?php echo $emailErr; ?></span>
+              </div>
+              <br>
+              <!-- INDIRIZZO -->
+              <div class="form-group">
+                <label for="city">Inserisci la tua Città e la tua Provincia</label>
+                <input type="text" name="city" value="<?php echo $city; ?>" class="form-control" id="city">
+                <span class="error">* <?php echo $cityErr; ?></span>
+                <br><br>
+                <label for="address">Inserisci l'Indirizzo e il numero civico</label>
+                <input type="text" name="address" value="<?php echo $address; ?>" class="form-control" id="address">
+                <span class="error">* <?php echo $addressErr; ?></span>
+              </div>
+              <br>
+              <!-- NUMERO DI TELEFONO -->
+              <div class="form-group">
+                <label for="number">Inserisci il tuo Numero di Telefono</label>
+                <input type="text" name="number" value="<?php echo $number; ?>" class="form-control" id="number">
+                <span class="error">* <?php echo $numberErr; ?></span>
+              </div>
+              <br>
+              <!-- PASSWORD -->
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" value="<?php echo $password; ?>" class="form-control" id="password">
+                <span class="error">* <?php echo $passwordErr; ?></span>
+              </div>
+              <br>
+              <!-- PASSWORD CONFIRM -->
+              <div class="form-group">
+                <label for="password">Conferma Password</label>
+                <input type="password" name="passwordConferma" value="<?php echo $passwordConferma; ?>" class="form-control" id="password">
+                <span class="error">* <?php echo $passwordConfErr; ?></span>
+              </div>
+              <br>
+              <!-- CHECKBOX -->
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" style="background-color: #585859; border: none;">Registrati</button>
+              <?php echo $passwordHash; ?>
+              <!-- DA TOGLIERE-->
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </main>
+    <br>
 
-        <!-- ---------------------------------------------------------------------------------------- -->
+    <!-- ---------------------------------------------------------------------------------------- -->
 
-        <!-- * inserire tag php *
+    <!-- * inserire tag php *
         //controllo campi completati
 
         /*
@@ -257,50 +257,50 @@ include("funzioni-database.php");
         */
         -->
 
-        <!-- --------------------------------------------------------------------------------------- -->
+    <!-- --------------------------------------------------------------------------------------- -->
 
-        <!--<div class="footer" style="min-height: 100%;> -->
+    <!--<div class="footer" style="min-height: 100%;> -->
 
-        <footer class="bg-dark text-light py-4">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-4">
-          <h5>Orari</h5>
-          <ul class="list-unstyled">
-            <li>Lun-Sab: 7.00–19.30</li>
-            <li class="mb-3">Orario Continuato</li>
-            <li>Domenica: chiuso</li>
-          </ul>
+    <footer class="bg-dark text-light py-4">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <h5>Orari</h5>
+            <ul class="list-unstyled">
+              <li>Lun-Sab: 7.00–19.30</li>
+              <li class="mb-3">Orario Continuato</li>
+              <li>Domenica: chiuso</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Informazioni</h5>
+            <ul class="list-unstyled">
+              <li>Purinan Unconventional Bakery</li>
+              <li>
+                <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Social</h5>
+            <a class="text-danger mr-2" href="https://www.facebook.com/purinanbakery" target="_blank">
+              <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a class="text-danger" href="https://www.instagram.com/purinan_bakery" target="_blank">
+              <i class="fab fa-instagram fa-2x"></i>
+            </a>
+          </div>
         </div>
-        <div class="col-md-4">
-          <h5>Informazioni</h5>
-          <ul class="list-unstyled">
-            <li>Purinan Unconventional Bakery</li>
-            <li>
-              <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Social</h5>
-          <a class="text-danger mr-2" href="https://www.facebook.com/purinanbakery" target="_blank">
-            <i class="fab fa-facebook fa-2x"></i>
-          </a>
-          <a class="text-danger" href="https://www.instagram.com/purinan_bakery" target="_blank">
-            <i class="fab fa-instagram fa-2x"></i>
-          </a>
-        </div>
+
+        <p class="text-center mb-0">Copyright &copy; Morello & Purinan</p>
       </div>
+    </footer>
 
-      <p class="text-center mb-0">Copyright &copy; Morello & Purinan</p>
-    </div>
-  </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-    </div>
+  </div>
 </body>
 
 </html>

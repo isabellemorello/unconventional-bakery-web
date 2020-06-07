@@ -25,7 +25,7 @@ function inserimento_utente($name, $email, $passwordHash, $city, $address, $numb
 				<strong>Utente registrato con successo.</strong>
 			  </div>';
         echo '<div>
-                <a href="index-ubw.html" class="btn btn-secondary">Torna alla Homepage</a>
+                <a href="index.php" class="btn btn-secondary">Torna alla Homepage</a>
                 <a href="catalogo.php" class="btn btn-secondary" id="catalogo">Vai al Catalogo</a>
             </div>';
     }
@@ -51,18 +51,32 @@ function ottieni_catalogo()
                 </div>
             </div>';
     }
-
     mysqli_close($conn);
 }
 
-function inserimento_catalogo($name, $price)
+function login()
 {
+    $email = $password = "";
     $conn = dbConnect();
-    $query = $conn->query("SELECT * FROM ubw_product WHERE product_name = '$name' AND product_price = '$price';");
-    if ($query->num_rows) {
-        echo "Bene";
-    } else {
-        echo "Male";
-    }
-    mysqli_close($conn);
+    $sql = "SELECT * FROM ubw_customer WHERE user_email = '$email'
+    AND user_password = '$password'";
+
+    echo $sql;
+
+    /*$result = mysqli_query($conn, $sql);
+    
+    $rows = mysqli_num_rows($result);
+    if ($rows >= 1)  {
+            echo "Login completato";
+            header("refresh : 3; url = index-ubw.php");
+        } else {
+            echo "Dati non corretti. Ricontrolla.";
+        }
+
+	$num_rows = mysqli_num_rows($result);
+	if ($num_rows >= 1) {
+		echo '<div class="alert alert-success">
+					<strong>Utente esistente nel databse</strong>
+			    </div>';
+	};   */
 }

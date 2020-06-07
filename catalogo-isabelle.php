@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index-ubw.html">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chi-siamo.html">Chi Siamo</a>
@@ -45,24 +45,24 @@
     </nav>
   </header>
 
-<!-- ----------------------------------------------------------------------------------- -->
+  <!-- ----------------------------------------------------------------------------------- -->
 
-<div class="main" style="flex-grow: 1" method="POST">
-            <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
-                <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
-                    Catalogo</h2>
-                <h4 class="container" style="border-radius: 5px; background-color: #cfcfd3; padding: 10px;">Benvenuti
-                    nello shop online di "Purinan - Unconventional Bakery"!</h4>
-                <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
-                <p>L'acquisto è molto semplice: basta passare con il mouse sopra la foto del prodotto desiderato e
-                    cliccare. Il prodotto verrà aggiunto automaticamente al carrello.</p>
-                <p>Per vedere tutti i prodotti che sono stati aggiunti al carrello e completare l'acquisto, basta andare
-                    nella sezione "Carrello", dove si possono aggiungere le quantità per prodotto selezionato.</p>
-            </div>
-        </div>
-        <br>
+  <div class="main" style="flex-grow: 1" method="POST">
+    <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
+      <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
+        Catalogo</h2>
+      <h4 class="container" style="border-radius: 5px; background-color: #cfcfd3; padding: 10px;">Benvenuti
+        nello shop online di "Purinan - Unconventional Bakery"!</h4>
+      <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
+      <p>L'acquisto è molto semplice: basta passare con il mouse sopra la foto del prodotto desiderato e
+        cliccare. Il prodotto verrà aggiunto automaticamente al carrello.</p>
+      <p>Per vedere tutti i prodotti che sono stati aggiunti al carrello e completare l'acquisto, basta andare
+        nella sezione "Carrello", dove si possono aggiungere le quantità per prodotto selezionato.</p>
+    </div>
+  </div>
+  <br>
 
-<!-- ----------------------------------------------------------------------------------- -->
+  <!-- ----------------------------------------------------------------------------------- -->
 
   <main class="container py-5">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -70,7 +70,7 @@
     </div>
   </main>
 
-<!-- ----------------------------------------------------------------------------------- -->
+  <!-- ----------------------------------------------------------------------------------- -->
 
   <footer class="bg-dark text-light py-4">
     <div class="container">

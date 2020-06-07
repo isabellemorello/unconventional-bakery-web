@@ -1,3 +1,7 @@
+<?php 
+include("funzioni-database.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +22,9 @@
 <div class="main" style="flex-grow: 1" method="POST">
     <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
       <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
-            Catalogo</h2>
+            Carrello</h2>
       <h4 class="container" style="border-radius: 5px; background-color: #cfcfd3; padding: 10px;">
-        Benvenuti nello shop online di "Purinan - Unconventional Bakery"!
+        Questo è il carrello con gli ordini che hai scelto dal catalogo.
       </h4>
       <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
       <p>L'acquisto è molto semplice: basta passare con il mouse sopra la foto del prodotto desiderato e
@@ -34,7 +38,9 @@
   <!-- ----------------------------------------------------------------------------------- -->
 
   <main class="container py-5">
-    <?php include "templates/catalogo.php"; ?>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+  <?php ottieni_catalogo(); ?>
+</div>
   </main>
 
   <!-- ----------------------------------------------------------------------------------- -->
