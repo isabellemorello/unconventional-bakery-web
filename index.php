@@ -113,7 +113,7 @@
               </h4>
             </div>
           </div>
-          <img src="images/caffe.jpg" class="card-img rounded" alt="caffe" />
+          <img src="images/caffe.jpg" class="card-img rounded shadow" alt="caffe" />
           <div class="card-body">
             <p class="card-text text-justify">E' possibile degustare qualsiasi tipologia di bevanda; caffè, orzo,
               ginseng, oltre a prodotti per la
@@ -134,7 +134,7 @@
               </h4>
             </div>
           </div>
-          <img src="images/pane2.jpg" class="card-img rounded" alt="pane" />
+          <img src="images/pane2.jpg" class="card-img rounded shadow" alt="pane" />
           <div class="card-body">
             <p class="card-text text-justify">Da oltre 60 anni il panificio Purinan è il più conosciuto
               a Udine. Nel panificio Purinan si respira la
@@ -156,7 +156,7 @@
               </h4>
             </div>
           </div>
-          <img src="images/prosciutti.JPG" class="card-img rounded" alt="winery" />
+          <img src="images/prosciutti.JPG" class="card-img rounded shadow" alt="winery" />
           <div class="card-body">
             <p class="card-text text-justify">Non solo pane, non solo pasticceria, il panificio Purinan
               è anche vineria in città! Potrete trovare

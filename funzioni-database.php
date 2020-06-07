@@ -54,29 +54,22 @@ function ottieni_catalogo()
     mysqli_close($conn);
 }
 
-function login()
+function login($email, $password)
 {
-    $email = $password = "";
     $conn = dbConnect();
-    $sql = "SELECT * FROM ubw_customer WHERE user_email = '$email'
-    AND user_password = '$password'";
+    $sql = "SELECT * FROM ubw_customer
+    WHERE user_email = '" . $email . "'
+    AND user_password = '" . $password . "';";
 
-    echo $sql;
+    $result = mysqli_query($conn, $sql);
 
-    /*$result = mysqli_query($conn, $sql);
-    
-    $rows = mysqli_num_rows($result);
-    if ($rows >= 1)  {
-            echo "Login completato";
-            header("refresh : 3; url = index-ubw.php");
-        } else {
-            echo "Dati non corretti. Ricontrolla.";
-        }
+    $userFound = mysqli_num_rows($result) == 1;
 
-	$num_rows = mysqli_num_rows($result);
-	if ($num_rows >= 1) {
-		echo '<div class="alert alert-success">
-					<strong>Utente esistente nel databse</strong>
-			    </div>';
-	};   */
+    if ($userFound) {
+        header("refresh: 2; url = /unconventional-bakery-web/index.php");
+    }
+
+    mysqli_close($conn);
+
+    return $userFound;
 }
