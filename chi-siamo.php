@@ -43,55 +43,52 @@
     </nav>
   </header>
 
-  <div class="main" style="flex-grow: 1">
-    <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
-      <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
-        Chi siamo</h2>
-      <div class="container" style="background-color: #cfcfd3; border-radius: 10px; padding: 20px;">
-        <p>Nel centro di Udine c’è un locale dove potrete riscoprire le vecchie tradizioni. <br>
-          Ecco, è proprio di tradizione che ci contraddistingue, in particolare di quella del fare il
-          pane,
-          quello vero, preparato con lo sforzo e la passione di alzarsi alle 4 del mattino e impastare.
-          Sembra
-          facile, ma unire dei semplici ingredienti come l’acqua e la farina per creare quella fragranza,
-          quel
-          profumo che la mattina si percepisce nell’aria, è una vera e propria arte.</p>
-        <br>
-        <div style="text-align: center">
-          <img src="images/esterno.JPG" alt="esterno" width="40%" style="margin-left: auto; margin-right: auto">
-        </div> <br>
-        <p>Sono ormai quasi 60 anni che in via del Gelso, nel centro storico di Udine, si trova il Panificio
-          Purinan. Gestito prima dal nonno Mario e dalla nonna Pia, il panificio è passato ora ai figli
-          Andrea
-          e Roberto che ormai sono aiutati, a loro volta dai, figli. <br>
-          Il classico panificio nel 2011 è diventato “Unconventional Bakery” per offrire oggi ora anche
-          servizio di bar, paninoteca, pizza al trancio, pranzi veloci, ma rimane comunque uno dei
-          panifici
-          storici di Udine, con la sua storia familiare dal
-          sapore di tradizione, che continua nel tempo e riscopre le vecchie usanze. </p>
-        <br>
-        <div style="text-align: center">
-          <img src="images/bancone-pane.JPG" alt="bancone-pane" width="40%" style="margin-left: auto; margin-right: auto">
-        </div> <br>
-        <p>Nella nostra "Unconventional Bakery" potrete trovare diversi tipi di pane tra cui quello all'olio
-          extravergine di oliva, pane ai 5 cereali, pane al latte, pane alle olive, pane alla zucca, ma
-          anche
-          latte, gnocchi di patate freschi, biscotti artigianali,
-          croissant, fagottini di mela, pasticceria mignon, torte sacher, pastiera napoletana, crostate
-          varie,
-          gubane, focacce dolci, panettoni artigianali, focacce salate,
-          pizza a lunga lievitazione, e tanto altro! <br>
-          Da oggi potrete anche ordinare online nella pagina del sito dedicata all'e-commerce. Basta
-          registrati, scegliere i prodotti che più ti piacciono, pagare semplicemente con paypal e poi
-          scegliere se farti consegnare a casa la merce oppure se ritirarla direttamente in negozio.
-        </p><br>
-        <div style="text-align: center">
-          <img src="images/divisa-purinan.JPG" alt="divisa-purinan" width="40%" style="margin-left: auto; margin-right: auto">
-        </div><br>
-      </div>
+  <main class="container mt-4 mb-5">
+    <h2 class="pb-4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+      Chi siamo</h2>
+    <div class="px-4 py-5 rounded shadow">
+      <p>Nel centro di Udine c’è un locale dove potrete riscoprire le vecchie tradizioni. <br>
+        Ecco, è proprio di tradizione che ci contraddistingue, in particolare di quella del fare il
+        pane,
+        quello vero, preparato con lo sforzo e la passione di alzarsi alle 4 del mattino e impastare.
+        Sembra
+        facile, ma unire dei semplici ingredienti come l’acqua e la farina per creare quella fragranza,
+        quel
+        profumo che la mattina si percepisce nell’aria, è una vera e propria arte.</p>
       <br>
+      <div style="text-align: center">
+        <img src="images/esterno.JPG" alt="esterno" width="40%" class="mb-3 rounded shadow" style="margin-left: auto; margin-right: auto">
+      </div> <br>
+      <p>Sono ormai quasi 60 anni che in via del Gelso, nel centro storico di Udine, si trova il Panificio
+        Purinan. Gestito prima dal nonno Mario e dalla nonna Pia, il panificio è passato ora ai figli
+        Andrea
+        e Roberto che ormai sono aiutati, a loro volta dai, figli. <br>
+        Il classico panificio nel 2011 è diventato “Unconventional Bakery” per offrire oggi ora anche
+        servizio di bar, paninoteca, pizza al trancio, pranzi veloci, ma rimane comunque uno dei
+        panifici
+        storici di Udine, con la sua storia familiare dal
+        sapore di tradizione, che continua nel tempo e riscopre le vecchie usanze. </p>
+      <br>
+      <div style="text-align: center">
+        <img src="images/bancone-pane.JPG" alt="bancone-pane" width="40%" class="mb-3 rounded shadow" style="margin-left: auto; margin-right: auto">
+      </div> <br>
+      <p>Nella nostra "Unconventional Bakery" potrete trovare diversi tipi di pane tra cui quello all'olio
+        extravergine di oliva, pane ai 5 cereali, pane al latte, pane alle olive, pane alla zucca, ma
+        anche
+        latte, gnocchi di patate freschi, biscotti artigianali,
+        croissant, fagottini di mela, pasticceria mignon, torte sacher, pastiera napoletana, crostate
+        varie,
+        gubane, focacce dolci, panettoni artigianali, focacce salate,
+        pizza a lunga lievitazione, e tanto altro! <br>
+        Da oggi potrete anche ordinare online nella pagina del sito dedicata all'e-commerce. Basta
+        registrati, scegliere i prodotti che più ti piacciono, pagare semplicemente con paypal e poi
+        scegliere se farti consegnare a casa la merce oppure se ritirarla direttamente in negozio.
+      </p><br>
+      <div style="text-align: center">
+        <img src="images/divisa-purinan.JPG" alt="divisa-purinan" width="40%" class="mb-3 rounded shadow" style="margin-left: auto; margin-right: auto">
+      </div><br>
     </div>
-  </div>
+  </main>
 
 
   <!--<div class="footer" style="min-height: 100%;> -->
