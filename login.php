@@ -20,19 +20,19 @@ if (isset($_POST["login"])) {
 <html lang="en">
 
 <head>
-  <title>Purinan Unconventional Bakery</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous">
+  <title>Purinan Unconventional Bakery</title>
 </head>
 
 <body>
   <div>
     <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <a class="navbar-brand" href="#">
-          <img src="images/logo-purinan-traspartente2.png" height="44" alt="" loading="lazy">
+        <a class="navbar-brand" href="/unconventional-bakery-web/index.php">
+          <img src="images/logo-purinan-traspartente2.png" height="44" alt="Logo" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -41,21 +41,21 @@ if (isset($_POST["login"])) {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
+              <a class="nav-link" href="/unconventional-bakery-web/index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="chi-siamo.html">Chi Siamo</a>
+              <a class="nav-link" href="/unconventional-bakery-web/chi-siamo.php">Chi Siamo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="catalogo.php">Catalogo</a>
+              <a class="nav-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>
             </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#"><i class="fas fa-user"></i> Log In <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/unconventional-bakery-web/registrazione.php"><i class="fas fa-user"></i> Log In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+              <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
             </li>
           </ul>
         </div>
@@ -64,7 +64,7 @@ if (isset($_POST["login"])) {
 
     <main class="container my-4">
       <h2 class="mb-4">Registrazione</h2>
-      <div class="alert alert-secondary" role="alert">
+      <div class="alert alert-secondary mb-5" role="alert">
         Effettua la registrazione per poter procedere con gli acquisti online.<br>
         Dopo aver eseguito l'accesso avrai subito la possibilità di andare a sfogliare il catalogo e comprare i dolci che più preferisci.
       </div>
@@ -89,7 +89,7 @@ if (isset($_POST["login"])) {
             <!-- Validazione del FORM -->
             <!-- E-MAIL -->
             <div class="form-group">
-              <label for="email">Inserisci l'E-mail</label>
+              <label for="email">E-mail</label>
               <input type="text" name="email" class="form-control" id="email">
             </div>
             <br>

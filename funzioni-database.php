@@ -46,7 +46,7 @@ function ottieni_catalogo()
                 <div class="card-body">
                     <h5 class="card-title">' . $row["product_name"] . '</h5>
                     <h6 class="card-subtitle mb-4 text-muted">' . $row["product_price"] . '€/pz</h6>
-                    <button class="btn btn-dark btn-block">Aggiungi al carrello</button>
+                    <button class="btn btn-dark btn-block">Aggiungi al Carrello</button>
                 </div>
                 </div>
             </div>';
