@@ -1,5 +1,8 @@
 <?php
+session_start();
+
 include("funzioni-database.php");
+include("sessioni.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,27 +38,33 @@ include("funzioni-database.php");
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <?php
+          if (isset($_SESSION["login"])) {
+            echo '<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+              . '<i class="fas fa-user"></i> ' . $_SESSION["email"] .
+              '</a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+              </div>
+            </li>';
+            echo '<li class="nav-item">
+              <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+            </li>';
+          } else {
+            echo '<li class="nav-item">
             <a class="nav-link" href="/unconventional-bakery-web/login.php"><i class="fas fa-user"></i> Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
-          </li>
+          </li>';
+          }
+          ?>
         </ul>
       </div>
     </nav>
   </header>
 
-  <main class="container">
-    <div style="margin-top:80px; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding:10px">
-      <h2>Registrazione</h2>
-    </div>
-    <div class="container">
-      <p style="background-color: #cfcfd3; border-radius: 5px; padding: 5px 20px">
-        Effettua la registrazione per poter procedere con gli acquisti online. <br>
-        Dopo aver eseguito l'accesso avrai subito la possibilità di andare a sfogliare il catalogo e comprare i dolci che più preferisci.</p>
-    </div>
-    <br>
+  <main class="container mt-4 mb-5">
+    <h2 class="mb-4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">Registrazione</h2>
+
     <!-- ---------------------------------------------------------------------------------------- -->
 
     <?php
@@ -150,7 +159,12 @@ include("funzioni-database.php");
     }
 
     if ($submit_ok) {
-      inserimento_utente($name, $email, $passwordHash, $city, $address, $number);
+      $signUpSuccess = inserimento_utente($name, $email, $passwordHash, $city, $address, $number);
+
+      if ($signUpSuccess) {
+        startSession($email);
+        header("refresh: 2; url = /unconventional-bakery-web/index.php");
+      }
     }
 
     function clean_input($data) //fortifica la validazione del FORM
@@ -162,80 +176,107 @@ include("funzioni-database.php");
       return $data;
     }
 
+    if ($submit_ok && $signUpSuccess) {
+      echo '<div class="alert alert-success">Registrazione avvenuta.<br>Verrai reindirizzato alla homepage tra pochi secondi.</div>';
+    } else {
+      echo '<div class="alert alert-secondary mb-5" role="alert">
+      Effettua la registrazione per poter procedere con gli acquisti online.<br>
+      Dopo aver eseguito l\'accesso avrai subito la possibilità di andare a sfogliare il catalogo e comprare i dolci che più preferisci.
+    </div>';
+    }
+
     ?>
 
     <!-- ---------------------------------------------------------------------------------------- -->
 
     <!-- Form per l'inserimento di dati sul DB -->
     <div class="row justify-content-center">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <div>
-          <p><span class="error">* Campo obbligatorio</span></p>
-          <br><br>
-          <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <!-- Validazione del FORM -->
-            <!-- NOME e COGNOME -->
-            <div class="form-group">
-              <label for="username">Inserisci Nome e Cognome</label>
-              <input type="text" name="name" value="<?php echo $name; ?>" class="form-control" id="username">
-              <span class="error">* <?php echo $nameErr; ?></span>
-            </div>
-            <br>
-            <!-- E-MAIL -->
-            <div class="form-group">
-              <label for="email">Inserisci l'E-mail</label>
-              <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" id="email">
-              <span class="error">* <?php echo $emailErr; ?></span>
-            </div>
-            <br>
-            <!-- INDIRIZZO -->
-            <div class="form-group">
-              <label for="city">Inserisci la tua Città e la tua Provincia</label>
-              <input type="text" name="city" value="<?php echo $city; ?>" class="form-control" id="city">
-              <span class="error">* <?php echo $cityErr; ?></span>
-              <br><br>
-              <label for="address">Inserisci l'Indirizzo e il numero civico</label>
-              <input type="text" name="address" value="<?php echo $address; ?>" class="form-control" id="address">
-              <span class="error">* <?php echo $addressErr; ?></span>
-            </div>
-            <br>
-            <!-- NUMERO DI TELEFONO -->
-            <div class="form-group">
-              <label for="number">Inserisci il tuo Numero di Telefono</label>
-              <input type="text" name="number" value="<?php echo $number; ?>" class="form-control" id="number">
-              <span class="error">* <?php echo $numberErr; ?></span>
-            </div>
-            <br>
-            <!-- PASSWORD -->
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" name="password" value="<?php echo $password; ?>" class="form-control" id="password">
-              <span class="error">* <?php echo $passwordErr; ?></span>
-            </div>
-            <br>
-            <!-- PASSWORD CONFIRM -->
-            <div class="form-group">
-              <label for="password">Conferma Password</label>
-              <input type="password" name="passwordConferma" value="<?php echo $passwordConferma; ?>" class="form-control" id="password">
-              <span class="error">* <?php echo $passwordConfErr; ?></span>
-            </div>
-            <br>
-            <!-- CHECKBOX -->
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" style="background-color: #585859; border: none;">Registrati</button>
-            <?php echo $passwordHash; ?>
-            <!-- DA TOGLIERE-->
-          </form>
-        </div>
+      <div class="col-md-5">
+        <p class="text-danger mb-4">* Campo obbligatorio</p>
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+          <!-- Validazione del FORM -->
+          <!-- NOME e COGNOME -->
+          <div class="form-group">
+            <label for="username">Nome e Cognome</label>
+            <input type="text" name="name" value="<?php echo $name; ?>" class="form-control <?php echo ($nameErr != "") ? "is-invalid" : ""; ?>" id="username">
+            <?php
+            if ($nameErr != "") {
+              echo '<div class="invalid-feedback">' . $nameErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <!-- E-MAIL -->
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" value="<?php echo $email; ?>" class="form-control <?php echo ($emailErr != "") ? "is-invalid" : ""; ?>" id="email">
+            <?php
+            if ($emailErr != "") {
+              echo '<div class="invalid-feedback">' . $emailErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <!-- CITTÀ -->
+          <div class="form-group">
+            <label for="city">Città e Provincia</label>
+            <input type="text" name="city" value="<?php echo $city; ?>" class="form-control <?php echo ($cityErr != "") ? "is-invalid" : ""; ?>" id="city">
+            <?php
+            if ($cityErr != "") {
+              echo '<div class="invalid-feedback">' . $cityErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <!-- INDIRIZZO -->
+          <div class="form-group">
+            <label for="address">Indirizzo</label>
+            <input type="text" name="address" value="<?php echo $address; ?>" class="form-control <?php echo ($addressErr != "") ? "is-invalid" : ""; ?>" id="address">
+            <?php
+            if ($addressErr != "") {
+              echo '<div class="invalid-feedback">' . $addressErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <!-- NUMERO DI TELEFONO -->
+          <div class="form-group">
+            <label for="number">Numero di Telefono</label>
+            <input type="text" name="number" value="<?php echo $number; ?>" class="form-control <?php echo ($numberErr != "") ? "is-invalid" : ""; ?>" id="number">
+            <?php
+            if ($numberErr != "") {
+              echo '<div class="invalid-feedback">' . $numberErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" value="<?php echo $password; ?>" class="form-control <?php echo ($passwordErr != "") ? "is-invalid" : ""; ?>" id="password">
+            <?php
+            if ($passwordErr != "") {
+              echo '<div class="invalid-feedback">' . $passwordErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <!-- PASSWORD CONFIRM -->
+          <div class="form-group">
+            <label for="password">Conferma Password</label>
+            <input type="password" name="passwordConferma" value="<?php echo $passwordConferma; ?>" class="form-control <?php echo ($passwordConfErr != "") ? "is-invalid" : ""; ?>" id="password">
+            <?php
+            if ($passwordConfErr != "") {
+              echo '<div class="invalid-feedback">' . $passwordConfErr . '</div>';
+            }
+            ?>
+          </div>
+
+          <button type="submit" class="btn btn-dark btn-block">Registrati</button>
+        </form>
       </div>
-      <div class="col-md-4"></div>
     </div>
   </main>
-  <br>
 
   <!-- ---------------------------------------------------------------------------------------- -->
 

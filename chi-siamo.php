@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+include("sessioni.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,12 +38,25 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <?php
+          if (isset($_SESSION["login"])) {
+            echo '<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+              . '<i class="fas fa-user"></i> ' . $_SESSION["email"] .
+              '</a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+              </div>
+            </li>';
+            echo '<li class="nav-item">
+              <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+            </li>';
+          } else {
+            echo '<li class="nav-item">
             <a class="nav-link" href="/unconventional-bakery-web/login.php"><i class="fas fa-user"></i> Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
-          </li>
+          </li>';
+          }
+          ?>
         </ul>
       </div>
     </nav>

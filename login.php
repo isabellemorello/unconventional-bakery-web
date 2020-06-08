@@ -1,10 +1,8 @@
 <?php
-//session_start();
-/*
-if (isset($_SESSION["mySession"])) {
-    header("");
-    exit;
-}*/
+session_start();
+
+include("funzioni-database.php");
+include("sessioni.php");
 
 $email = "";
 $password = "";
@@ -17,9 +15,13 @@ if ($wasSubmitted) {
 }
 
 if ($email != "" && $password != "") {
-  include("funzioni-database.php");
   $passwordHash = sha1($password);
   $loginSuccess = login($email, $passwordHash);
+
+  if ($loginSuccess) {
+    startSession($email);
+    header("refresh: 2; url = /unconventional-bakery-web/index.php");
+  }
 }
 ?>
 
@@ -57,12 +59,25 @@ if ($email != "" && $password != "") {
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/unconventional-bakery-web/registrazione.php"><i class="fas fa-user"></i> Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
-          </li>
+          <?php
+          if (isset($_SESSION["login"])) {
+            echo '<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+              . '<i class="fas fa-user"></i> ' . $_SESSION["email"] .
+              '</a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+              </div>
+            </li>';
+            echo '<li class="nav-item">
+              <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+            </li>';
+          } else {
+            echo '<li class="nav-item active">
+            <a class="nav-link" href="/unconventional-bakery-web/login.php"><i class="fas fa-user"></i> Log In</a>
+          </li>';
+          }
+          ?>
         </ul>
       </div>
     </nav>
@@ -87,18 +102,6 @@ if ($email != "" && $password != "") {
 
     <!-- ---------------------------------------------------------------------------------------- -->
 
-    <?php
-    // SESSIONE
-    /*$_SESSION["mySession"] = sha1($password, $email);
-        login($email, $password);
-		echo " <h3><p style='color:green';><strong> Complimenti, ti sei appena loggato pagina </strong></p></h3>" ;
-		// echo "Tra pochi secondi verrai reindirizzato alla pagina precedente";
-		// header("Refresh: 4; url=session_index.php");*/
-
-    ?>
-
-    <!-- ---------------------------------------------------------------------------------------- -->
-
     <!-- Form per l'inserimento di dati sul DB -->
     <div class="row justify-content-center">
       <div class="col-md-5">
@@ -107,7 +110,7 @@ if ($email != "" && $password != "") {
           <!-- E-MAIL -->
           <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="text" name="email" class="form-control 
+            <input type="text" name="email" class="form-control
               <?php if ($wasSubmitted && $email == "") {
                 echo "is-invalid";
               } ?>" id="email">
@@ -123,7 +126,7 @@ if ($email != "" && $password != "") {
           <!-- PASSWORD -->
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control 
+            <input type="password" name="password" class="form-control
               <?php if ($wasSubmitted && $password == "") {
                 echo "is-invalid";
               } ?>" id="password">
@@ -136,21 +139,12 @@ if ($email != "" && $password != "") {
             ?>
           </div>
 
-          <!-- CHECKBOX -->
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-
           <!-- BOTTONE -->
           <button type="submit" name="submit" class="btn btn-dark btn-block">Accedi</button>
+          <hr>
+          <!-- REGISTRAZIONE -->
+          <a class="btn btn-block btn-outline-dark" href="/unconventional-bakery-web/registrazione.php">Registrati</a>
         </form>
-
-        <!-- REGISTRAZIONE -->
-        <div class="mt-4 text-center">
-          <p>Se non sei ancora registrato:</p>
-          <button type="button" class="btn btn-secondary bg-dark"><a href="/unconventional-bakery-web/registrazione.php" class="text-reset text-decoration-none">Registrati</a></button>
-        </div>
       </div>
     </div>
   </main>

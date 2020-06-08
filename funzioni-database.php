@@ -18,18 +18,23 @@ function inserimento_utente($name, $email, $passwordHash, $city, $address, $numb
     $conn = dbConnect();
     $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password, user_city, user_address, user_number)
             VALUES ('" . $name . "', '" . $email . "', '" . $passwordHash . "', '" . $city . "', '" . $address . "','" . $number . "');";
-    if (!$conn->query($sql)) {
+
+    /*if (!$conn->query($sql)) {
         echo '<div class="alert alert-danger"><strong>Attenzione errore nella query:</strong> ' . $sql . "\n" . mysqli_error($conn) . '</div>';
     } else {
         echo '<div class="alert alert-success">
 				<strong>Utente registrato con successo.</strong>
-			  </div>';
+			</div>';
         echo '<div>
                 <a href="index.php" class="btn btn-secondary">Torna alla Homepage</a>
                 <a href="catalogo.php" class="btn btn-secondary" id="catalogo">Vai al Catalogo</a>
             </div>';
-    }
+    }*/
+
+    $success = mysqli_query($conn, $sql);
+
     mysqli_close($conn);
+    return $success;
 }
 
 // Catalogo
@@ -54,6 +59,7 @@ function ottieni_catalogo()
     mysqli_close($conn);
 }
 
+// Login
 function login($email, $password)
 {
     $conn = dbConnect();
@@ -62,14 +68,8 @@ function login($email, $password)
     AND user_password = '" . $password . "';";
 
     $result = mysqli_query($conn, $sql);
-
     $userFound = mysqli_num_rows($result) == 1;
 
-    if ($userFound) {
-        header("refresh: 2; url = /unconventional-bakery-web/index.php");
-    }
-
     mysqli_close($conn);
-
     return $userFound;
 }

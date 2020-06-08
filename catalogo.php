@@ -1,4 +1,9 @@
-<?php include "funzioni-database.php"; ?>
+<?php
+session_start();
+
+include("funzioni-database.php");
+include("sessioni.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,12 +39,25 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <?php
+          if (isset($_SESSION["login"])) {
+            echo '<li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+              . '<i class="fas fa-user"></i> ' . $_SESSION["email"] .
+              '</a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+              </div>
+            </li>';
+            echo '<li class="nav-item">
+              <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+            </li>';
+          } else {
+            echo '<li class="nav-item">
             <a class="nav-link" href="/unconventional-bakery-web/login.php"><i class="fas fa-user"></i> Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
-          </li>
+          </li>';
+          }
+          ?>
         </ul>
       </div>
     </nav>
@@ -54,7 +72,8 @@
       <p class="font-weight-bold">Benvenuti nello shop online di Purinan – Unconventional Bakery!</p>
       <hr>
       <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
-      <p>L'acquisto è molto semplice: dopo aver effettuato il <strong><a href="/unconventional-bakery-web/login.php" class="text-reset">login</a></strong>, basta cliccare sul bottone "Aggiungi al Carrello" e il prodotto verrà aggiunto automaticamente al carrello.</p>
+      <p>L'acquisto è molto semplice: dopo aver effettuato il <strong><a href="/unconventional-bakery-web/login.php" class="text-reset">login</a></strong>,
+        basta cliccare sul bottone "Aggiungi al Carrello" e il prodotto verrà aggiunto automaticamente al carrello.</p>
       <p class="mb-0">Per vedere tutti i prodotti che sono stati aggiunti al carrello e completare l'acquisto, basta andare
         nella sezione "Carrello", dove si possono aggiungere le quantità per prodotto selezionato.</p>
     </div>
