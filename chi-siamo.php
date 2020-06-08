@@ -33,7 +33,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/unconventional-bakery-web/registrazione.php"><i class="fas fa-user"></i> Log In</a>
+            <a class="nav-link" href="/unconventional-bakery-web/login.php"><i class="fas fa-user"></i> Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>

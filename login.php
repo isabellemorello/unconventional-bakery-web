@@ -69,7 +69,7 @@ if ($email != "" && $password != "") {
   </header>
 
   <main class="container mt-4 mb-5">
-    <h2 class="mb-4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">Registrazione</h2>
+    <h2 class="mb-4" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">Log In</h2>
     <?php
     if ($wasSubmitted && ($email == "" || $password == "")) {
       echo '<div class="alert alert-danger">Compila tutti i campi.</div>';
@@ -101,8 +101,8 @@ if ($email != "" && $password != "") {
 
     <!-- Form per l'inserimento di dati sul DB -->
     <div class="row justify-content-center">
-      <div class="col-md-4">
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+      <div class="col-md-5">
+        <form class="px-4 pt-4 pb-5 shadow" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
           <!-- Validazione del FORM -->
           <!-- E-MAIL -->
           <div class="form-group">
@@ -145,6 +145,12 @@ if ($email != "" && $password != "") {
           <!-- BOTTONE -->
           <button type="submit" name="submit" class="btn btn-dark btn-block">Accedi</button>
         </form>
+
+        <!-- REGISTRAZIONE -->
+        <div class="mt-4 text-center">
+          <p>Se non sei ancora registrato:</p>
+          <button type="button" class="btn btn-secondary bg-dark"><a href="/unconventional-bakery-web/registrazione.php" class="text-reset text-decoration-none">Registrati</a></button>
+        </div>
       </div>
     </div>
   </main>

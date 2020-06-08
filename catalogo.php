@@ -35,7 +35,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/unconventional-bakery-web/registrazione.php"><i class="fas fa-user"></i> Log In</a>
+            <a class="nav-link" href="/unconventional-bakery-web/login.php"><i class="fas fa-user"></i> Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
@@ -54,7 +54,7 @@
       <p class="font-weight-bold">Benvenuti nello shop online di Purinan – Unconventional Bakery!</p>
       <hr>
       <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
-      <p>L'acquisto è molto semplice: basta cliccare sul bottone "Aggiungi al Carrello" e il prodotto verrà aggiunto automaticamente al carrello.</p>
+      <p>L'acquisto è molto semplice: dopo aver effettuato il <strong><a href="/unconventional-bakery-web/login.php" class="text-reset">login</a></strong>, basta cliccare sul bottone "Aggiungi al Carrello" e il prodotto verrà aggiunto automaticamente al carrello.</p>
       <p class="mb-0">Per vedere tutti i prodotti che sono stati aggiunti al carrello e completare l'acquisto, basta andare
         nella sezione "Carrello", dove si possono aggiungere le quantità per prodotto selezionato.</p>
     </div>
