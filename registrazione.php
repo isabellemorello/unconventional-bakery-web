@@ -272,30 +272,13 @@ include("sessioni.php");
             ?>
           </div>
 
-          <button type="submit" class="btn btn-dark btn-block">Registrati</button>
+          <button type="submit" class="btn btn-dark btn-block mt-5">Registrati</button>
         </form>
       </div>
     </div>
   </main>
 
   <!-- ---------------------------------------------------------------------------------------- -->
-
-  <!-- * inserire tag php *
-        //controllo campi completati
-
-        /*
-        if ($username = "" && $password = "") {
-            //richiamo la funzione inserisci_utente();
-            inserisci_utente($username, $password);
-        } else {
-            echo '<div class="alert alert-danger">
-				<strong>Compila tutti i campi, grazie.</strong>
-			  </div>';
-        }
-        */
-        -->
-
-  <!-- --------------------------------------------------------------------------------------- -->
 
   <!--<div class="footer" style="min-height: 100%;> -->
 

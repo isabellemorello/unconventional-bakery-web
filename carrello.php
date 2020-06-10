@@ -58,7 +58,6 @@ include("sessioni.php");
           </li>';
           }
           ?>
-          ?>
         </ul>
       </div>
     </nav>
@@ -66,28 +65,18 @@ include("sessioni.php");
 
   <!-- ----------------------------------------------------------------------------------- -->
 
-  <div class="main" style="flex-grow: 1" method="POST">
-    <div class="container" style="margin-top:80px; margin-left: 30px; margin-right: 30px;">
-      <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
-        Carrello</h2>
-      <h4 class="container" style="border-radius: 5px; background-color: #cfcfd3; padding: 10px;">
-        Questo è il carrello con gli ordini che hai scelto dal catalogo.
-      </h4>
-      <p>Qui troverete il catalogo di tutti i prodotti che sono acquistabili online.</p>
-      <p>L'acquisto è molto semplice: basta passare con il mouse sopra la foto del prodotto desiderato e
-        cliccare. Il prodotto verrà aggiunto automaticamente al carrello.</p>
-      <p>Per vedere tutti i prodotti che sono stati aggiunti al carrello e completare l'acquisto, basta andare
-        nella sezione "Carrello", dove si possono aggiungere le quantità per prodotto selezionato.</p>
-    </div>
-  </div>
-  <br>
+  <main class="container mt-4 mb-5">
+    <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
+      Carrello</h2>
+    <?php
+    $articoliNelCarrello = isset($_SESSION["carrello"]) ? $_SESSION["carrello"] : array();
 
-  <!-- ----------------------------------------------------------------------------------- -->
-
-  <main class="container py-5">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-      <?php ottieni_catalogo(); ?>
-    </div>
+    if (count($articoliNelCarrello) > 0) {
+      ottieni_carrello($articoliNelCarrello);
+    } else {
+      echo '<div class="alert alert-secondary">Il carrello è vuoto. Torna al <a class="alert-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>.</div>';
+    }
+    ?>
   </main>
 
   <!-- ----------------------------------------------------------------------------------- -->

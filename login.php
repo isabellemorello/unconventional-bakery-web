@@ -106,7 +106,7 @@ if ($email != "" && $password != "") {
     <div class="row justify-content-center">
       <div class="col-md-5">
         <form class="px-4 pt-4 pb-5 shadow" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-          <!-- Validazione del FORM -->
+          <!-- Validazione del FORM --> // PREG_MATCH + CLEAN_INPUT
           <!-- E-MAIL -->
           <div class="form-group">
             <label for="email">E-mail</label>
@@ -140,7 +140,7 @@ if ($email != "" && $password != "") {
           </div>
 
           <!-- BOTTONE -->
-          <button type="submit" name="submit" class="btn btn-dark btn-block">Accedi</button>
+          <button type="submit" name="submit" class="btn btn-dark btn-block mt-5">Accedi</button>
           <hr>
           <!-- REGISTRAZIONE -->
           <a class="btn btn-block btn-outline-dark" href="/unconventional-bakery-web/registrazione.php">Registrati</a>
