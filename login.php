@@ -4,17 +4,26 @@ session_start();
 include("funzioni-database.php");
 include("sessioni.php");
 
-$email = "";
-$password = "";
+$email = $password = $emailErr = $passwordErr = "";
 $wasSubmitted = isset($_POST["submit"]);
+$login_ok = true;
 $loginSuccess = false;
 
 if ($wasSubmitted) {
-  $email = $_POST["email"];
-  $password = $_POST["password"];
+  $email = clean_input($_POST["email"]);
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "E-mail non valida";
+    $login_ok = false;
+  }
+
+  $password = clean_input($_POST["password"]);
+  if (!preg_match_all("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/m", $password)) {
+    $passwordErr = "Controlla la password inserita.";
+    $login_ok = false;
+  }
 }
 
-if ($email != "" && $password != "") {
+if ($login_ok) {
   $passwordHash = sha1($password);
   $loginSuccess = login($email, $passwordHash);
 
@@ -22,6 +31,15 @@ if ($email != "" && $password != "") {
     startSession($email);
     header("refresh: 2; url = /unconventional-bakery-web/index.php");
   }
+}
+
+function clean_input($data) //fortifica la validazione del FORM
+{
+  $data = trim($data); //trim --> toglie caratteri non necessari negli input dell'utente
+  $data = stripslashes($data); //stripslashes --> rimuove i back-slash dai dati input dell'utente
+  $data = htmlspecialchars($data); //htmlspacialchars --> Converte i caratteri speciali in HTML:
+  //ulteriore metodo di validazione del form
+  return $data;
 }
 ?>
 

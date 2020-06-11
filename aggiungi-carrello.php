@@ -5,7 +5,7 @@ include("sessioni.php");
 if (!isset($_SESSION["login"])) {
     header("Location: /unconventional-bakery-web/login.php");
 } else {
-    $articoloId = $_GET["id"]; // prende l'id dal query parameter
+    $articoloId = $_GET["id"]; // prende l'id articol dal query parameter
     $quantitaRichiesta = isset($_GET["quantita"]) ? max($_GET["quantita"], 0) : 1; // altrimenti mi aggiunge solo 1 articolo di default
 
     if (!isset($_SESSION["carrello"])) {

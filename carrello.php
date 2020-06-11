@@ -72,6 +72,7 @@ include("sessioni.php");
     $articoliNelCarrello = isset($_SESSION["carrello"]) ? $_SESSION["carrello"] : array();
 
     if (count($articoliNelCarrello) > 0) {
+      echo '<div class="alert alert-secondary mt-4 mb-5">Ricordati di premere il tasto aggiorna per confermare la quantità scelta di ogni prodotto.</div>';
       ottieni_carrello($articoliNelCarrello);
     } else {
       echo '<div class="alert alert-secondary">Il carrello è vuoto. Torna al <a class="alert-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>.</div>';

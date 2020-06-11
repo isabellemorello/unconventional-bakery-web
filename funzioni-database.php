@@ -94,10 +94,10 @@ function ottieni_carrello($articoli)
 
     $subtotale = 0;
     while ($row = mysqli_fetch_array($result)) { // cicla (= scorrere i risultati) sui risultati della query
-        $articoloId = $row["product_ID"];
+        $articoloId = $row["product_ID"]; // riguarda la tabella nel db
 
         $prezzoUnitario = $row["product_price"];
-        $quantita = $articoli[$articoloId]; // contare numero di volte che $articoloId (presente nel database) compare in $articoli
+        $quantita = $articoli[$articoloId]; // contare numero di volte che $articoloId (presente nel database) compare in $articoli ossia nel carrello
         $prezzoTotaleArticolo = $quantita * $prezzoUnitario;
         $subtotale += $prezzoTotaleArticolo;
 
