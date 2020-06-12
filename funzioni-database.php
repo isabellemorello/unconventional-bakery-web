@@ -140,3 +140,13 @@ function ottieni_carrello($articoli)
 
     mysqli_close($conn);
 }
+
+function rimuoviUtente($email)
+{
+    $conn = dbConnect();
+    $sql = "DELETE FROM ubw_customer WHERE user_email = '" . $email . "';";
+    $result = mysqli_query($conn, $sql) or die("Errore nella query: " . $sql . "\n" . mysqli_error($sql));
+
+    mysqli_close($conn);
+    return $result;
+}

@@ -47,6 +47,7 @@ include("sessioni.php");
               '</a>
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+                <a class="dropdown-item" href="/unconventional-bakery-web/rimuovi-utente.php">Elimina profilo</a>
               </div>
             </li>';
             echo '<li class="nav-item active">
@@ -75,7 +76,8 @@ include("sessioni.php");
       echo '<div class="alert alert-secondary mt-4 mb-5">Ricordati di premere il tasto aggiorna per confermare la quantità scelta di ogni prodotto.</div>';
       ottieni_carrello($articoliNelCarrello);
     } else {
-      echo '<div class="alert alert-secondary">Il carrello è vuoto. Torna al <a class="alert-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>.</div>';
+      echo '<div class="alert alert-secondary">Il carrello è vuoto. Torna al 
+      <a class="alert-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>.</div>';
     }
     ?>
   </main>

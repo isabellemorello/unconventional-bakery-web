@@ -46,6 +46,7 @@ include("sessioni.php");
               '</a>
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+                <a class="dropdown-item" href="/unconventional-bakery-web/rimuovi-utente.php">Elimina profilo</a>
               </div>
             </li>';
             echo '<li class="nav-item">

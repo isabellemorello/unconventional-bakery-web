@@ -47,6 +47,7 @@ include("sessioni.php");
               '</a>
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+                <a class="dropdown-item" href="/unconventional-bakery-web/rimuovi-utente.php">Elimina profilo</a>
               </div>
             </li>';
 
@@ -54,7 +55,8 @@ include("sessioni.php");
 
             if (isset($articoliNelCarrello) && count($articoliNelCarrello) > 0) {
               echo '<li class="nav-item">
-                <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello <span class="badge badge-pill badge-danger">' . count($articoliNelCarrello) . '</span></a>
+                <a class="nav-link" href="/unconventional-bakery-web/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello 
+                  <span class="badge badge-pill badge-danger">' . count($articoliNelCarrello) . '</span></a>
               </li>';
             } else {
               echo '<li class="nav-item">

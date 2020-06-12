@@ -85,6 +85,7 @@ function clean_input($data) //fortifica la validazione del FORM
               '</a>
               <div class="dropdown-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="/unconventional-bakery-web/logout.php">Log Out</a>
+                <a class="dropdown-item" href="/unconventional-bakery-web/rimuovi-utente.php">Elimina profilo</a>
               </div>
             </li>';
             echo '<li class="nav-item">
@@ -124,7 +125,7 @@ function clean_input($data) //fortifica la validazione del FORM
     <div class="row justify-content-center">
       <div class="col-md-5">
         <form class="px-4 pt-4 pb-5 shadow" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-          <!-- Validazione del FORM --> // PREG_MATCH + CLEAN_INPUT
+          <!-- Validazione del FORM -->
           <!-- E-MAIL -->
           <div class="form-group">
             <label for="email">E-mail</label>
