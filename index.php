@@ -112,14 +112,9 @@ include("sessioni.php");
 
   <!-- ----------------------------------------------------------------------------------- -->
   <main class="container mb-5">
-    <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
+    <h2 class="mb-5" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding: 10px 0px;">
       Purinan – Unconventional Bakery
     </h2>
-
-    <div class="mt-3 mb-5">
-      <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner
-        (try to re-size this window).</p>
-    </div>
 
     <!--Grid Column Bar-Pasticceria, Panificio, Winery-->
 
@@ -154,7 +149,7 @@ include("sessioni.php");
               </h4>
             </div>
           </div>
-          <img src="images/pane2.jpg" class="card-img rounded shadow" alt="pane" />
+          <img src="images/pane2.JPG" class="card-img rounded shadow" alt="pane" />
           <div class="card-body">
             <p class="card-text text-justify">Da oltre 60 anni il panificio Purinan è il più conosciuto
               a Udine. Nel panificio Purinan si respira la
@@ -209,6 +204,7 @@ include("sessioni.php");
             <li>
               <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
             </li>
+            <li>Telefono: 0432 229301</li>
           </ul>
         </div>
         <div class="col-md-4">

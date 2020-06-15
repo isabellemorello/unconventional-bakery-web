@@ -188,6 +188,7 @@ function clean_input($data) //fortifica la validazione del FORM
             <li>
               <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
             </li>
+            <li>Telefono: 0432 229301</li>
           </ul>
         </div>
         <div class="col-md-4">

@@ -3,6 +3,7 @@ session_start();
 
 include("funzioni-database.php");
 include("sessioni.php");
+include("mail.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,10 +162,8 @@ include("sessioni.php");
 
     if ($submit_ok) {
       $signUpSuccess = inserimento_utente($name, $email, $passwordHash, $city, $address, $number);
-
       if ($signUpSuccess) {
-        startSession($email);
-        header("refresh: 2; url = /unconventional-bakery-web/index.php");
+        invia_conferma_registrazione($email);
       }
     }
 
@@ -178,7 +177,7 @@ include("sessioni.php");
     }
 
     if ($submit_ok && $signUpSuccess) {
-      echo '<div class="alert alert-success">Registrazione avvenuta.<br>Verrai reindirizzato alla homepage tra pochi secondi.</div>';
+      echo '<div class="alert alert-success">Registrazione avvenuta.<br>Ti verrà inviata una mail per confermare la registrazione.</div>';
     } else {
       echo '<div class="alert alert-secondary mb-5" role="alert">
       Effettua la registrazione per poter procedere con gli acquisti online.<br>
@@ -301,6 +300,7 @@ include("sessioni.php");
             <li>
               <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
             </li>
+            <li>Telefono: 0432 229301</li>
           </ul>
         </div>
         <div class="col-md-4">

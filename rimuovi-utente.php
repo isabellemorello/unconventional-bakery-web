@@ -2,8 +2,6 @@
 session_start();
 include("sessioni.php");
 include("funzioni-database.php");
-
-$rimozione = false;
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +17,7 @@ $rimozione = false;
 
 <body>
     <?php
-
+    $rimozione = false;
     if (isset($_SESSION["email"])) {
         $email = $_SESSION["email"];
         $rimozione = rimuoviUtente($email);

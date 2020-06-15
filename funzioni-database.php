@@ -1,8 +1,9 @@
 <?php
-// Funzione per la connessione al database db_purinan_ubw
+// Funzione per la connessione al database my_purinanbakery
 function dbConnect()
 {
-    $database_ubw = mysqli_connect("127.0.0.1", "root", "", "db_purinan_ubw"); // CORRETTO (controllato sul database in "Privilegi")
+    $database_ubw = mysqli_connect("localhost", "purinanbakery", "", "my_purinanbakery"); // CORRETTO (controllato sul database in "Privilegi")
+
 
     if (!$database_ubw) {
         echo "Errore: impossibile connettersi al database." . PHP_EOL;
@@ -15,23 +16,12 @@ function dbConnect()
 // Inserimento utenti
 function inserimento_utente($name, $email, $passwordHash, $city, $address, $number)
 {
+    $hash = sha1($email . $passwordHash);
     $conn = dbConnect();
-    $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password, user_city, user_address, user_number)
-            VALUES ('" . $name . "', '" . $email . "', '" . $passwordHash . "', '" . $city . "', '" . $address . "','" . $number . "');";
+    $sql = "INSERT INTO ubw_customer (user_username, user_email, user_password, user_city, user_address, user_number, user_confirmed, user_hash)
+            VALUES ('" . $name . "', '" . $email . "', '" . $passwordHash . "', '" . $city . "', '" . $address . "', '" . $number . "', 0, '" . $hash . "');";
 
-    /*if (!$conn->query($sql)) {
-        echo '<div class="alert alert-danger"><strong>Attenzione errore nella query:</strong> ' . $sql . "\n" . mysqli_error($conn) . '</div>';
-    } else {
-        echo '<div class="alert alert-success">
-				<strong>Utente registrato con successo.</strong>
-			</div>';
-        echo '<div>
-                <a href="index.php" class="btn btn-secondary">Torna alla Homepage</a>
-                <a href="catalogo.php" class="btn btn-secondary" id="catalogo">Vai al Catalogo</a>
-            </div>';
-    }*/
-
-    $success = mysqli_query($conn, $sql);
+    $success = mysqli_query($conn, $sql) or die("Errore nella query: " . $sql . "\n" . mysqli_error($sql));
 
     mysqli_close($conn);
     return $success;
@@ -141,11 +131,34 @@ function ottieni_carrello($articoli)
     mysqli_close($conn);
 }
 
+// Rimuovi Utente
 function rimuoviUtente($email)
 {
     $conn = dbConnect();
     $sql = "DELETE FROM ubw_customer WHERE user_email = '" . $email . "';";
     $result = mysqli_query($conn, $sql) or die("Errore nella query: " . $sql . "\n" . mysqli_error($sql));
+
+    mysqli_close($conn);
+    return $result;
+}
+
+// Per confermare email
+function conferma_email($hash)
+{
+    $conn = dbConnect();
+    $sql = "UPDATE ubw_customer SET user_confirmed = 1 WHERE user_hash = '" . $hash . "';";
+    $result = mysqli_query($conn, $sql);
+
+    mysqli_close($conn);
+    return $result;
+}
+
+// Per selezionare un dato utente
+function ottieni_utente($email)
+{
+    $conn = dbConnect();
+    $sql = "SELECT * FROM ubw_customer WHERE user_email = '" . $email . "';";
+    $result = mysqli_query($conn, $sql);
 
     mysqli_close($conn);
     return $result;

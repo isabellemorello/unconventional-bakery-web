@@ -77,7 +77,8 @@ include("sessioni.php");
       ottieni_carrello($articoliNelCarrello);
     } else {
       echo '<div class="alert alert-secondary">Il carrello è vuoto. Torna al 
-      <a class="alert-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>.</div>';
+      <a class="alert-link" href="/unconventional-bakery-web/catalogo.php">Catalogo</a>.</div>
+      <br><br><br><br>';
     }
     ?>
   </main>
@@ -102,6 +103,7 @@ include("sessioni.php");
             <li>
               <a class="text-light" href="https://bit.ly/2XaykMC" target="_blank">Via del Gelso 2, Udine</a>
             </li>
+            <li>Telefono: 0432 229301</li>
           </ul>
         </div>
         <div class="col-md-4">
